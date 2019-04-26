@@ -46,7 +46,17 @@ target_include_directories(FLAC
     ${PROJECT_BINARY_DIR}
     )
 
-target_link_libraries(FLAC
-  PRIVATE
-    $<$<BOOL:${HAVE_LIBM}>:m>
+if(HAVE_LIBM)
+  target_link_libraries(FLAC PRIVATE m)
+endif()
+  
+if(ENABLE_OGG)
+  target_link_libraries(FLAC PRIVATE Ogg::ogg)
+  target_sources(FLAC
+    PRIVATE
+      ogg_decoder_aspect.c
+      ogg_encoder_aspect.c
+      ogg_helper.c
+      ogg_mapping.c
     )
+endif()
