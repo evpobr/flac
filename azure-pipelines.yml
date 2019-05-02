@@ -1,8 +1,8 @@
 jobs:
-  - job: Ubuntu_AutoTools
+  - job: Ubuntu_AutoTools_GCC
     pool:
       vmImage: 'Ubuntu-16.04'
-    displayName: 'Linux (Autotools)'
+    displayName: 'Linux (GCC + Autotools)'
     strategy:
       matrix:
         Default:
@@ -16,3 +16,26 @@ jobs:
         ./configure $(CONFIGURE_OPTS)
         make
         make check
+
+jobs:
+  - job: Ubuntu_AutoTools_Clang
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    displayName: 'Linux (Clang + Autotools)'
+    strategy:
+      matrix:
+        GCC:
+          CONFIGURE_OPTS: ''
+        GCC --enable-64-bit-words:
+          CONFIGURE_OPTS: '--enable-64-bit-words'
+    steps:
+    - script: |
+        sudo apt-get install -y libtool-bin clang libogg-dev
+        export CC=clang
+        export CXX=clang++
+        ./autogen.sh
+        ./configure $(CONFIGURE_OPTS)
+        make
+        make check
+
+        environmentVariables:
