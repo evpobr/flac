@@ -37,10 +37,10 @@ jobs:
         make
         make check
 
-  - job: macOS_AutoTools_GCC
+  - job: macOS_AutoTools_AppleClang
     pool:
       vmImage: 'macOS-10.13'
-    displayName: 'macOS (GCC + Autotools)'
+    displayName: 'macOS (AppleClang + Autotools)'
     strategy:
       matrix:
         Default:
