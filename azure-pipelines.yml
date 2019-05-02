@@ -7,7 +7,7 @@ jobs:
       matrix:
         Default:
           CONFIGURE_OPTS: ''
-        Enable64BitWords:
+        --enable-64-bit-words:
           CONFIGURE_OPTS: '--enable-64-bit-words'
     steps:
     - script: |
@@ -23,9 +23,9 @@ jobs:
     displayName: 'Linux (Clang + Autotools)'
     strategy:
       matrix:
-        GCC:
+        Default:
           CONFIGURE_OPTS: ''
-        GCC --enable-64-bit-words:
+        --enable-64-bit-words:
           CONFIGURE_OPTS: '--enable-64-bit-words'
     steps:
     - script: |
@@ -37,4 +37,21 @@ jobs:
         make
         make check
 
-        environmentVariables:
+jobs:
+  - job: macOS_AutoTools_GCC
+    pool:
+      vmImage: 'macOS-10.13'
+    displayName: 'macOS (GCC + Autotools)'
+    strategy:
+      matrix:
+        Default:
+          CONFIGURE_OPTS: ''
+        --enable-64-bit-words:
+          CONFIGURE_OPTS: '--enable-64-bit-words'
+    steps:
+    - script: |
+        brew install libogg
+        ./autogen.sh
+        ./configure $(CONFIGURE_OPTS)
+        make
+        make check
