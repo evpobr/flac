@@ -37,7 +37,6 @@ jobs:
         make
         make check
 
-jobs:
   - job: macOS_AutoTools_GCC
     pool:
       vmImage: 'macOS-10.13'
