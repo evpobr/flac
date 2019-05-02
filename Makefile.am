@@ -50,6 +50,7 @@ EXTRA_DIST = \
 	config.rpath \
 	depcomp \
 	ltmain.sh \
-	strip_non_asm_libtool_args.sh
+	strip_non_asm_libtool_args.sh \
+	azure-pipelines.yml
 
 CLEANFILES = *~

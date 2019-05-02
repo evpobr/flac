@@ -1,0 +1,12 @@
+jobs:
+  - job: Ubuntu_AutoTools
+    pool:
+      vmImage: 'Ubuntu-16.04'
+    displayName: 'Linux (Autotools)'
+    steps:
+    - script: |
+      sudo apt-get install -y libogg-dev
+      ./autogen.sh
+      ./configure
+      make
+      make check
