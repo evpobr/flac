@@ -17,7 +17,6 @@ jobs:
         make
         make check
 
-jobs:
   - job: Ubuntu_AutoTools_Clang
     pool:
       vmImage: 'Ubuntu-16.04'
