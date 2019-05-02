@@ -5,7 +5,7 @@ jobs:
     displayName: 'Linux (Autotools)'
     steps:
     - script: |
-        sudo apt-get install -y libogg-dev
+        sudo apt-get install -y libtool-bin libogg-dev
         ./autogen.sh
         ./configure
         make
