@@ -29,8 +29,12 @@ jobs:
       matrix:
         Default:
           CONFIGURE_OPTS: ''
+          cCompiler: clang
+          cxxCompiler: clang++
         --enable-64-bit-words:
           CONFIGURE_OPTS: '--enable-64-bit-words'
+          cCompiler: clang
+          cxxCompiler: clang++
     steps:
     - script: sudo apt-get install -y libtool-bin clang libogg-dev
       displayName: Install dependencies
