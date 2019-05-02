@@ -38,10 +38,6 @@ jobs:
     steps:
     - script: sudo apt-get install -y libtool-bin clang libogg-dev
       displayName: Install dependencies
-    - script: |
-        export CC=clang
-        export CXX=clang++
-      displayName: Set Clang as C\C++ compiler
     - script: ./autogen.sh
       displayName: Bootstrap
     - script: ./configure $(CONFIGURE_OPTS)
