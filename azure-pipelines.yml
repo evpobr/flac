@@ -6,9 +6,9 @@ jobs:
     strategy:
       matrix:
         Default:
-          CONFIGURE_OPTS=''
+          CONFIGURE_OPTS: ''
         Enable64BitWords:
-          CONFIGURE_OPTS='--enable-64-bit-words'
+          CONFIGURE_OPTS: '--enable-64-bit-words'
     steps:
     - script: |
         sudo apt-get install -y libtool-bin libogg-dev
