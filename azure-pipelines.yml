@@ -5,8 +5,8 @@ jobs:
     displayName: 'Linux (GCC + Autotools)'
     strategy:
       matrix:
-        Default:
-          CONFIGURE_OPTS: ''
+        --disable-64-bit-words:
+          CONFIGURE_OPTS: '--disable-64-bit-words'
         --enable-64-bit-words:
           CONFIGURE_OPTS: '--enable-64-bit-words'
     steps:
@@ -26,9 +26,8 @@ jobs:
       vmImage: 'Ubuntu-16.04'
     displayName: 'Linux (Clang + Autotools)'
     strategy:
-      matrix:
-        Default:
-          CONFIGURE_OPTS: ''
+        --disable-64-bit-words:
+          CONFIGURE_OPTS: '--disable-64-bit-words'
           cCompiler: clang
           cxxCompiler: clang++
         --enable-64-bit-words:
@@ -56,8 +55,8 @@ jobs:
     displayName: 'macOS (AppleClang + Autotools)'
     strategy:
       matrix:
-        Default:
-          CONFIGURE_OPTS: ''
+        --disable-64-bit-words:
+          CONFIGURE_OPTS: '--disable-64-bit-words'
         --enable-64-bit-words:
           CONFIGURE_OPTS: '--enable-64-bit-words'
     steps:
