@@ -40,7 +40,10 @@ jobs:
       displayName: Install dependencies
     - script: ./autogen.sh
       displayName: Bootstrap
-    - script: ./configure $(CONFIGURE_OPTS)
+    - script: |
+      export CC=clang
+      export CXX-clang++
+      ./configure $(CONFIGURE_OPTS)
       displayName: Configure
     - script: make
       displayName: Build
