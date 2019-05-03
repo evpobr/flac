@@ -26,6 +26,7 @@ jobs:
       vmImage: 'Ubuntu-16.04'
     displayName: 'Linux (Clang + Autotools)'
     strategy:
+      matrix:
         --disable-64-bit-words:
           CONFIGURE_OPTS: '--disable-64-bit-words'
           cCompiler: clang
