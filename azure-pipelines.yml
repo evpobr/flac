@@ -41,9 +41,9 @@ jobs:
     - script: ./autogen.sh
       displayName: Bootstrap
     - script: |
-      export CC=clang
-      export CXX-clang++
-      ./configure $(CONFIGURE_OPTS)
+        export CC=clang
+        export CXX-clang++
+        ./configure $(CONFIGURE_OPTS)
       displayName: Configure
     - script: make
       displayName: Build
