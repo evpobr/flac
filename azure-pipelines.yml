@@ -42,7 +42,7 @@ jobs:
       displayName: Bootstrap
     - script: |
         export CC=clang
-        export CXX-clang++
+        export CXX=clang++
         ./configure $(CONFIGURE_OPTS)
       displayName: Configure
     - script: make
