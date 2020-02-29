@@ -38,6 +38,7 @@ SUBDIRS += examples
 endif
 
 EXTRA_DIST = \
+	.github/workflows/action.yml \
 	CMakeLists.txt \
 	config.cmake.h.in \
 	flac-config.cmake.in \
