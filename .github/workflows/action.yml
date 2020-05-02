@@ -19,7 +19,8 @@ jobs:
             ubuntu-latest-gcc-cmake-64-bit-words,
             ubuntu-latest-clang-cmake-64-bit-words,
             macos-latest-clang-autotools-64-bit-words,
-            macos-latest-clang-cmake-64-bit-words
+            macos-latest-clang-cmake-64-bit-words,
+            windows-latest-msvc-win64
           ]
         include:
           - name: ubuntu-latest-gcc-autotools
@@ -106,6 +107,13 @@ jobs:
             build-system: cmake
             configure-opts: -DENABLE_64_BIT_WORDS=ON
 
+          - name: windows-latest-msvc-win64
+            os: windows-latest
+            cc: cl
+            cxx: cl
+            build-system: cmake
+            configure-opts: ''
+
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -145,6 +153,11 @@ jobs:
           cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ${{ matrix.configure-opts }} -DCMAKE_FIND_FRAMEWORK=NEVER
           cmake --build .
           # ctest -V
+
+      - name: Pack with CMake
+        if: startsWith(matrix.os,'windows')
+        run: |
+          cd build
           # Get full path of CMake's cpack.exe, not Chokolatey's cpack.exe
           $CPackExe = (Get-Command cmake.exe).Path | split-path | join-path -ChildPath cpack.exe
           & $CPackExe -G ZIP

@@ -41,7 +41,6 @@ if(CMAKE_C_COMPILER_ID MATCHES "GNU")
 endif()
 
 include(CMakePackageConfigHelpers)
-include(CPack)
 include(CTest)
 include(CheckCCompilerFlag)
 include(CheckCXXCompilerFlag)
