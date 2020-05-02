@@ -146,7 +146,7 @@ jobs:
           ./autogen.sh
           ./configure ${{ matrix.configure-opts }}
           make
-          make check
+          # make check
 
       - name: Build with CMake
         if: startsWith(matrix.build-system,'cmake')
@@ -163,7 +163,7 @@ jobs:
       - name: Pack with CMake
         if: startsWith(matrix.os,'windows')
         run: |
-          cd build
+          cd cmake-build
           # Get full path of CMake's cpack.exe, not Chokolatey's cpack.exe
           $CPackExe = (Get-Command cmake.exe).Path | split-path | join-path -ChildPath cpack.exe
           & $CPackExe -G ZIP
