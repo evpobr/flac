@@ -112,7 +112,7 @@ jobs:
             cc: cl
             cxx: cl
             build-system: cmake
-            configure-opts: ''
+            configure-opts: 'BUILD_SHARED_LIBS=ON -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=Release -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_TOOLCHAIN_FILE=c:/vcpkg/scripts/buildsystems/vcpkg.cmake'
 
     runs-on: ${{ matrix.os }}
 
@@ -130,6 +130,12 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libtool-bin libogg-dev doxygen libxml2-utils w3c-sgml-lib
+
+      - name: Install Windows dependencies
+        if: startsWith(matrix.os,'windows')
+        run: |
+          vcpkg upgrade --no-dry-run
+          vcpkg install libogg:x64-windows-static
 
       - name: Build with Autotools
         if: startsWith(matrix.build-system,'autotools')
