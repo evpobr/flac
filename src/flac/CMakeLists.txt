@@ -19,6 +19,3 @@ target_link_libraries(flacapp
 if(TARGET win_utf8_io)
     target_link_libraries(flacapp win_utf8_io)
 endif()
-
-install(TARGETS flacapp EXPORT targets
-    RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}")

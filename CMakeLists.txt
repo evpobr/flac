@@ -123,6 +123,11 @@ endif()
 
 configure_file(config.cmake.h.in config.h)
 
+install(TARGETS flacapp metaflac FLAC FLAC++ EXPORT targets
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+
 if(INSTALL_CMAKE_CONFIG_MODULE)
     install(
         EXPORT targets
