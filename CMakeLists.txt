@@ -151,3 +151,5 @@ install(FILES ${FLAC++_HEADERS} DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/FLAC++"
 if(INSTALL_MANPAGES)
     install(FILES "man/flac.1" "man/metaflac.1" DESTINATION "${CMAKE_INSTALL_MANDIR}")
 endif()
+
+include(CPack)
