@@ -144,7 +144,7 @@ jobs:
           cd cmake-build
           cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ${{ matrix.configure-opts }} -DCMAKE_FIND_FRAMEWORK=NEVER
           cmake --build .
-          ctest -V
+          # ctest -V
           # Get full path of CMake's cpack.exe, not Chokolatey's cpack.exe
           $CPackExe = (Get-Command cmake.exe).Path | split-path | join-path -ChildPath cpack.exe
           & $CPackExe -G ZIP
