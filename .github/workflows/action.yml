@@ -112,7 +112,7 @@ jobs:
             cc: cl
             cxx: cl
             build-system: cmake
-            configure-opts: 'BUILD_SHARED_LIBS=ON -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=Release -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_TOOLCHAIN_FILE=c:/vcpkg/scripts/buildsystems/vcpkg.cmake'
+            configure-opts: '-DCMAKE_GENERATOR_PLATFORM=x64 -DVCPKG_TARGET_TRIPLET=x64-windows-static -DCMAKE_TOOLCHAIN_FILE=c:/vcpkg/scripts/buildsystems/vcpkg.cmake'
 
     runs-on: ${{ matrix.os }}
 
