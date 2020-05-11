@@ -2,6 +2,13 @@ cmake_minimum_required(VERSION 3.11)
 
 option(ENABLE_64_BIT_WORDS "Set FLAC__BYTES_PER_WORD to 8 (4 is the default)" OFF)
 option(WITH_XMMS "Build XMMS plugin" OFF)
+option (ENABLE_RUST "Enable Rust code" OFF)
+
+if (ENABLE_RUST)
+    enable_language(Rust)
+    include (CMakeCargo)
+    add_subdirectory(flac-rust)
+endif()
 
 add_subdirectory("libFLAC")
 if(BUILD_CXXLIBS)

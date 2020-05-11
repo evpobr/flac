@@ -98,6 +98,9 @@ target_link_libraries(FLAC PUBLIC $<$<BOOL:${HAVE_LROUND}>:m>)
 if(TARGET Ogg::ogg)
     target_link_libraries(FLAC PUBLIC Ogg::ogg)
 endif()
+if(ENABLE_RUST)
+    target_link_libraries(FLAC PRIVATE flac-rust)
+endif()
 if(BUILD_SHARED_LIBS)
     set_target_properties(FLAC PROPERTIES
         VERSION 8.3.0

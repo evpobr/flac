@@ -92,3 +92,6 @@ CTestTestfile.cmake
 _deps
 
 /.vs*/
+
+target
+Cargo.lock
